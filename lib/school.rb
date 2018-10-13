@@ -1,20 +1,18 @@
-# code here!
-class School
+require 'pry'
 
-  attr_accessor :roster # both getter and setter
+class School
+  attr_accessor :roster
+  # attr_accessor :student, :grade
   attr_reader :name
 
-  def initialize(name, roster = {}) # school name
+  def initialize(name) # school that can be initialized w a name
     @name = name
-    @roster = roster # roster is an empty hash upon initialization
+    @roster = {} # empty hash upon initialization
   end
 
-  def add_student(name, grade)
-    # access the instance variable that can be accessed from here
-    # the value at the grade key is an empty array UNLESS we already have that grade
-    # if that grade already exists, shovel the student name into the array
+  def add_student(student, grade)
     @roster[grade] = [] unless @roster[grade]
-    @roster[grade] << name
+      @roster[grade] << student
   end
 
   def grade(grade)
@@ -22,13 +20,15 @@ class School
   end
 
   def sort
-
     @roster.each do |grade, student_array|
-       @roster[grade] = student_array.sort
-    end ## returns @roster
-    # each returns exactly what you were iterating over
-    # the @roster hash is being edited/iterated on so we're returning the updated @roster 
-
+      @roster[grade] = student_array.sort
+    end
+      # binding.pry
+      # @roster
   end
 
-end
+end # end of School class
+
+# binding.pry
+#
+# puts "hello"
